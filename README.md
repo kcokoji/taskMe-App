@@ -51,7 +51,9 @@ Before you start, ensure you have the following installed on your system:
 2. Navigate to the project directory:
    cd your-repository
 3. Install the project dependencies:
-npm install
+```bash
+npm install 
+```
 4. Create a .env file in the root directory of the project and configure your environment variables:
 ```bash
 MONGODB_CONNECT=your-mongodb-connection-string
