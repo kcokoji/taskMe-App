@@ -1,0 +1,60 @@
+<%- include("header") %>
+<div class="container-sm text-center" style="max-width: 600px" id="stubborn">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+      <li class="breadcrumb-item active"><%= selectedFolder.title %> Folder</li>
+    </ol>
+  </nav>
+
+  <h1>Tasks in <%= selectedFolder.title %> Folder</h1>
+
+  <ul class="list-group mt-3">
+    <% if (selectedFolder.tasks && selectedFolder.tasks.length > 0) { %> <%
+    selectedFolder.tasks.forEach((task) => { %>
+    <li
+      class="list-group-item d-flex align-items-center justify-content-between"
+    >
+      <div class="d-flex align-items-center">
+        <input type="checkbox" class="form-check-input me-3" />
+        <span><%= task.name %></span>
+      </div>
+      <form
+        action="/tasks/<%= selectedFolder._id %>/delete-task/<%= task._id %>"
+        method="POST"
+      >
+        <button type="submit" class="btn btn-danger">Delete</button>
+      </form>
+    </li>
+    <% }); %> <% } else { %>
+    <li class="list-group-item">No tasks found in this folder.</li>
+    <% } %>
+  </ul>
+
+  <form
+    class="mt-3"
+    action="/tasks/<%= selectedFolder._id %>/create-task"
+    method="POST"
+  >
+    <div class="input-group">
+      <input
+        type="text"
+        class="form-control"
+        name="newTask"
+        placeholder="Add Task"
+        required
+      />
+      <input type="time" class="form-control" name="newTime" required />
+      <button
+        type="submit"
+        class="btn btn-primary"
+        style="background-color: #e97238; border: none"
+      >
+        Create Task
+      </button>
+    </div>
+  </form>
+</div>
+
+<%- include("footer") %>

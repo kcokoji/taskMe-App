@@ -1,0 +1,75 @@
+<%-include('header');-%>
+<div class="container px-4 py-5 my-5 text-center">
+  <h1
+    class="display-4 fw-bold text-light animate__animated animate__bounceIn animate__slow"
+  >
+    Organize your work<br />
+    and life, finally.
+  </h1>
+  <div class="col-lg-8 mx-auto">
+    <p class="lead mb-4 text-secondary animate__animated animate__fadeInUp">
+      Become focused, organized, and calm with Todoist. The world’s<br
+        class="d-none d-md-inline"
+      />
+      #1 task manager and to-do list app.
+    </p>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+      <button
+        type="submit"
+        class="btn btn-lg px-4 display-7"
+        style="background-color: #e97238; border: none"
+      >
+        <a href="/sign-up" class="nav-link">Get Started</a>
+      </button>
+      <button type="submit" class="btn btn-lg px-4 display-7 btn-outline-light">
+        <a href="/login" class="nav-link">Login</a>
+      </button>
+    </div>
+  </div>
+</div>
+<div
+  class="container d-flex justify-content-center align-items-center min-vh-100"
+>
+  <div class="rounded bg-light p-4 shadow col-xl-6 col-12 col-lg-6">
+    <div class="p-4 rounded">
+      <h1 class="text-center mb-4">User Feedback</h1>
+
+      <form
+        action="https://docs.google.com/forms/d/e/1FAIpQLSdVmFqduIsVGoZtzv92yh622q3Daos6Jml6Z1iU5r7UNpAK8A/formResponse?usp=pp_url"
+        method="post"
+      >
+        <div class="mb-1">
+          <label for="email" class="form-label">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Enter Your Email"
+            name="entry.1045781291"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Message</label>
+          <textarea
+            class="form-control"
+            id="message"
+            placeholder="Enter Your Feedback"
+            name="entry.1065046570"
+            rows="4"
+            required
+          ></textarea>
+        </div>
+        <button
+          class="btn btn-primary btn-lg w-100"
+          type="submit"
+          style="background-color: #e97238; border: none"
+        >
+          Submit Feedback
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%-include('footer');-%>

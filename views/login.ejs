@@ -1,0 +1,158 @@
+<%-include('header');-%>
+<div
+  class="container d-flex justify-content-center align-items-center min-vh-80"
+>
+  <!-- Centering container -->
+  <div class="rounded bg-light p-5 shadow col-xl-6 col-12 col-lg-6">
+    <h1 class="text-center">Log In</h1>
+    <% if (typeof warning !== 'undefined') { %>
+    <div class="alert alert-danger"><%= warning %></div>
+    <% } %>
+    <form action="/login" method="post">
+      <div class="form-group">
+        <label for="Username">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          aria-describedby="emailHelp"
+          placeholder="Enter Username"
+          name="username"
+        />
+      </div>
+      <div class="form-group">
+        <label for="Password">Password</label>
+        <div class="input-group mb-3">
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Enter Password"
+            aria-label="passwordHelp"
+            aria-describedby="basic-addon1"
+            name="password"
+            id="password"
+            autocomplete="off"
+          />
+          <span
+            class="input-group-text toggle-password"
+            onclick="togglePasswordVisibility()"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-eye-slash-fill"
+              viewBox="0 0 16 16"
+              id="eyeSlash"
+            >
+              <path
+                d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z"
+              />
+              <path
+                d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z"
+              />
+            </svg>
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-eye-fill"
+              viewBox="0 0 16 16"
+              id="eye"
+              style="display: none"
+            >
+              <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+              <path
+                d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"
+              />
+            </svg>
+          </span>
+        </div>
+      </div>
+      <button
+        class="mt-2 btn btn-primary btn-lg w-100 px-4"
+        type="submit"
+        style="background-color: #e97238; border: none"
+      >
+        Login
+      </button>
+      <p class="form-text text-muted"></p>
+      Haven't Signed Up?
+      <a
+        href="/sign-up"
+        class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+      >
+        Get Started</a
+      >
+      <p class="form-text text-muted"></p>
+      <a
+        href="/reset-password"
+        class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+      >
+        Reset Password</a
+      >
+    </form>
+    <div class="btn-group-vertical w-100 mt-3">
+      <button
+        class="btn mb-2"
+        style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px"
+      >
+        <a class="btn btn-block fw-bold" href="/auth/facebook" role="button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            width="23"
+            height="23"
+            viewBox="0 0 48 48"
+          >
+            <path
+              fill="#039be5"
+              d="M24 5A19 19 0 1 0 24 43A19 19 0 1 0 24 5Z"
+            ></path>
+            <path
+              fill="#fff"
+              d="M26.572,29.036h4.917l0.772-4.995h-5.69v-2.73c0-2.075,0.678-3.915,2.619-3.915h3.119v-4.359c-0.548-0.074-1.707-0.236-3.897-0.236c-4.573,0-7.254,2.415-7.254,7.917v3.323h-4.701v4.995h4.701v13.729C22.089,42.905,23.032,43,24,43c0.875,0,1.729-0.08,2.572-0.194V29.036z"
+            ></path>
+          </svg>
+          Continue with Facebook
+        </a>
+      </button>
+      <button
+        class="btn btn-outline-light mb-1"
+        style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px"
+      >
+        <a class="btn btn-block fw-bold" href="/auth/google" role="button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            width="23"
+            height="23"
+            viewBox="0 0 48 48"
+          >
+            <path
+              fill="#FFC107"
+              d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"
+            ></path>
+            <path
+              fill="#FF3D00"
+              d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"
+            ></path>
+            <path
+              fill="#4CAF50"
+              d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"
+            ></path>
+            <path
+              fill="#1976D2"
+              d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
+            ></path>
+          </svg>
+          Continue with Google
+        </a>
+      </button>
+    </div>
+  </div>
+</div>
+<%-include('footer');-%>

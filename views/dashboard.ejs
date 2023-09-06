@@ -1,0 +1,81 @@
+<%- include('header'); -%>
+
+<div class="container">
+  <h1
+    class="display-5 fw-bold text-light animate__animated animate__bounce animate__slow text-center"
+  >
+    Welcome <%= userId %> !
+  </h1>
+
+  <div class="d-flex justify-content-center mb-4">
+    <form class="create-note" method="post" action="/create-task">
+      <div class="input-group">
+        <input
+          type="text"
+          placeholder="Title of Task"
+          class="form-control form-control-lg"
+          name="taskTitle"
+        />
+        <button
+          type="submit"
+          class="btn btn-primary btn-block"
+          style="background-color: #e97238; border: none"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-plus-square-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"
+            />
+          </svg>
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <% if (taskFolders && taskFolders.length > 0) { %>
+  <h2 class="text-center text-light">Your Task Folders:</h2>
+  <div class="d-flex flex-wrap justify-content-center">
+    <% taskFolders.forEach((task) => { %>
+    <div
+      class="note p-3 m-2 border rounded bg-light"
+      style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px"
+    >
+      <strong>Title:</strong> <%= task.title %> Task<br />
+      <strong>Created:</strong> <%= task.created %>
+      <a
+        class="btn btn-primary"
+        style="
+          background-color: #e97238;
+          border: none;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        "
+        href="/tasks/<%= task._id %>"
+        >View Tasks</a
+      >
+      <form
+        action="/delete-task/<%= task._id %>"
+        method="post"
+        class="d-inline"
+      >
+        <button type="submit" class="btn btn-danger btn-sm ms-2">Delete</button>
+      </form>
+    </div>
+    <% }); %>
+  </div>
+  <% } else { %>
+  <p class="text-center">No task folders found.</p>
+  <% } %>
+</div>
+<div class="position-fixed bottom-0 end-0 p-3">
+  <form action="/logout" method="post">
+    <button type="submit" class="btn btn-danger">Logout</button>
+  </form>
+</div>
+
+<%- include('footer'); -%>
