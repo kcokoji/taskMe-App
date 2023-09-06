@@ -1,7 +1,6 @@
 require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
-const _ = require("lodash");
 const mongoose = require("mongoose");
 const { name } = require("ejs");
 const findOrCreate = require("mongoose-findorcreate");
@@ -19,7 +18,7 @@ const createdDate = currentDate.toLocaleDateString("en-US", {
   month: "2-digit",
   year: "2-digit",
 });
-
+//Database connection
 mongoose.connect(process.env.MONGODB_CONNECT, { useNewUrlParser: true });
 
 app.set("view engine", "ejs");
