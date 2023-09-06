@@ -2,7 +2,7 @@
 
 Welcome to the To-Do List web application repository! This web application is built using Node.js, Express.js, MongoDB, and Passport.js to help you manage your tasks efficiently. Whether you want to create, edit, or delete tasks, this application provides a user-friendly interface to handle your to-do list with ease.
 
-![taskMe Screenshoot](https://github.com/kcokoji/taskMe/assets/100976015/5135f985-16e5-4b8f-b8c6-143f5cecdf89)
+![taskMe Screenshoot](https://github.com/kcokoji/taskMe-App/assets/100976015/171b9f38-7c1d-4975-b2a4-af25a9852d2e)
 
 
 ## Table of Contents
